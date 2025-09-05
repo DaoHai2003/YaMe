@@ -2,62 +2,42 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const Products = () => {
-  const { id } = useParams(); // Lấy id từ URL
-  console.log("ID từ URL:", id);
-
+  const { id } = useParams();
   const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [status, setStatus] = useState("loading"); 
 
-  // Fetch API khi component được render
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-      const url = `http://localhost:3003/products/${id}`;
-      const res = await fetch(url); // Lấy đúng sản phẩm theo id
-        
-        if (!res.ok) {
-          throw new Error("Lỗi khi fetch dữ liệu sản phẩm");
-        }
+        const res = await fetch(`http://localhost:3003/products/${id}`);
+        if (!res.ok) throw new Error("Lỗi khi fetch dữ liệu sản phẩm");
         const data = await res.json();
         setProduct(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
+        setStatus("success");
+      } catch {
+        setStatus("error");
       }
     };
 
     fetchProduct();
   }, [id]);
 
-  // Khi đang loading
-  if (loading) {
-    return <div className="text-center py-10">Đang tải sản phẩm...</div>;
-  }
-
-  // Khi có lỗi
-  if (error) {
-    return <div className="text-center py-10 text-red-600">{error}</div>;
-  }
-
-  // Khi không tìm thấy sản phẩm
-  if (!product) {
-    return <div className="text-center py-10">Sản phẩm không tồn tại</div>;
-  }
+  if (status === "loading") return <div className="text-center py-10">Đang tải sản phẩm...</div>;
+  if (status === "error") return <div className="text-center py-10 text-red-600">Có lỗi xảy ra</div>;
+  if (!product) return <div className="text-center py-10">Sản phẩm không tồn tại</div>;
 
   // Khi fetch thành công
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 w-full max-w-[1280px] mx-auto">
       {/* Ảnh sản phẩm */}
       <div className="md:sticky md:top-0 self-start">
-        <img src={product.image} alt={product.name} className="w-[70%] mx-auto" />
+        <img src={`/${product.image}`} alt={product.name}  className="w-[70%] mx-auto" />
       </div>
 
       {/* Thông tin sản phẩm */}
       <div className="w-[100%] mx-auto px-3">
         <div className="text-4xl font-normal leading-normal">{product.name}</div>
-        <div className="text-2xl py-3">{product.price.toLocaleString()}₫</div>
+        <div className="text-2xl py-3">{Number(product.price).toLocaleString("vi-VN")}</div>
 
         <div className="text-gray-700">Phí vận chuyển được tính khi thanh toán</div>
         <div className="text-gray-700 py-2">Color</div>

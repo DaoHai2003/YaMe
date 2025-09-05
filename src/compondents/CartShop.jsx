@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ScrollReveal from "../compondents/scoll";
 
 const Cart_shop = ({ title, ids }) => {
   const [products, setProducts] = useState([]);
@@ -9,8 +10,6 @@ const Cart_shop = ({ title, ids }) => {
     fetch("http://localhost:3003/products")
       .then((res) => res.json())
       .then((data) => {
-        console.log("Dữ liệu từ API:", data);
-        // Nếu data có dạng { products: [...] }
         setProducts(data);
         setLoading(false);
       })
@@ -20,12 +19,9 @@ const Cart_shop = ({ title, ids }) => {
       });
   }, []);
 
-  // Lọc sản phẩm theo ids
   const filteredProducts = ids
     ? products.filter((p) => ids.includes(Number(p.id)))
     : products.slice(0, 4);
-
-  console.log("filteredProducts:", filteredProducts);
 
   if (loading) {
     return <div className="text-center py-10">Đang tải sản phẩm...</div>;
@@ -37,14 +33,22 @@ const Cart_shop = ({ title, ids }) => {
       <div className="text-gray pb-3">CHỈ SALE 3 NGÀY - SẮM NGAY</div>
 
       <div className="grid md:grid-cols-4 grid-cols-2 gap-5">
-        {filteredProducts.map((p) => (
-          <div key={p.id} className="cart">
+        {filteredProducts.map((p, index) => (
+          <ScrollReveal
+            key={p.id}
+            origin="bottom"
+            distance={50}
+            delay={index * 100} // stagger
+            duration={500} // mượt
+            easing="cubic-bezier(0.4, 0, 0.2, 1)"
+            className="cart"
+          >
             <Link to={`/ProductsPage/${p.id}`}>
-              <img src={p.image} alt={p.name} className="w-full" />
+              <img src={`/${p.image}`} alt={p.name} className="w-full" />
             </Link>
-            <div className="py-2">{p.name}</div>
-            <div>{p.price.toLocaleString()}₫</div>
-          </div>
+            <div className="py-2 font-medium">{p.name}</div>
+            <p>{p.price ? p.price.toLocaleString("vi-VN") : ""} ₫</p>
+          </ScrollReveal>
         ))}
       </div>
 

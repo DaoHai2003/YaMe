@@ -59,7 +59,7 @@ const Cart = () => {
 
         {/* ==== Tổng tiền ==== */}
         <div className="flex items-center justify-end md:col-span-1 min-w-[100px]">
-<p className="font-medium text-gray-800">218.000đ</p>
+        <p className="font-medium text-gray-800">218.000đ</p>
         </div>
       </div>
     </div>

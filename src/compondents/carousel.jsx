@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const Carousel = ({ ids = [] }) => {
   const [products, setProducts] = useState([]);
 
-  // Fetch API từ json-server
+  //Fetch API từ json-server
   useEffect(() => {
     fetch("http://localhost:3003/products")
       .then((res) => res.json())
@@ -56,7 +56,7 @@ const Carousel = ({ ids = [] }) => {
             <div className="p-2 lg:p-10 transition">
               <Link to={`/ProductsPage/${product.id}`}>
                 <img
-                  src={product.image} // ảnh phải nằm trong public/images
+                  src={product.image}
                   className="w-full object-cover"
                   alt={product.name}
                 />
@@ -66,7 +66,7 @@ const Carousel = ({ ids = [] }) => {
 
               <div className="flex space-x-4 pt-2">
                 <p className="text-left mt-1 font-500">
-                  {product.price.toLocaleString("vi-VN")} ₫
+                  {Number(product.price).toLocaleString("vi-VN")}
                 </p>
                 {product.giam && (
                   <p className="text-left mt-1 line-through text-gray-500">
