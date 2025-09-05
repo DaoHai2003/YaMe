@@ -1,0 +1,60 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+const Cart_shop = ({ title, ids }) => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("http://localhost:3003/products")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Dữ liệu từ API:", data);
+        // Nếu data có dạng { products: [...] }
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Lỗi khi fetch API:", err);
+        setLoading(false);
+      });
+  }, []);
+
+  // Lọc sản phẩm theo ids
+  const filteredProducts = ids
+    ? products.filter((p) => ids.includes(Number(p.id)))
+    : products.slice(0, 4);
+
+  console.log("filteredProducts:", filteredProducts);
+
+  if (loading) {
+    return <div className="text-center py-10">Đang tải sản phẩm...</div>;
+  }
+
+  return (
+    <div className="w-full max-w-[1280px] mx-auto px-3">
+      <div className="text-3xl py-6">{title}</div>
+      <div className="text-gray pb-3">CHỈ SALE 3 NGÀY - SẮM NGAY</div>
+
+      <div className="grid md:grid-cols-4 grid-cols-2 gap-5">
+        {filteredProducts.map((p) => (
+          <div key={p.id} className="cart">
+            <Link to={`/ProductsPage/${p.id}`}>
+              <img src={p.image} alt={p.name} className="w-full" />
+            </Link>
+            <div className="py-2">{p.name}</div>
+            <div>{p.price.toLocaleString()}₫</div>
+          </div>
+        ))}
+      </div>
+
+      <div className="flex justify-center">
+        <button className="px-6 py-3 bg-black text-white my-4">
+          XEM TẤT CẢ
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Cart_shop;
