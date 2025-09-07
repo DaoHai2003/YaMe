@@ -1,0 +1,498 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Thời trang nam",
+      "parent_id": null
+    },
+    {
+      "id": 2,
+      "name": "Áo nam",
+      "parent_id": 1
+    },
+    {
+      "id": 3,
+      "name": "Quần nam",
+      "parent_id": 1
+    },
+    {
+      "id": 4,
+      "name": "Thời trang nữ",
+      "parent_id": null
+    },
+    {
+      "id": 5,
+      "name": "Đầm nữ",
+      "parent_id": 4
+    },
+    {
+      "id": 6,
+      "name": "Áo nữ",
+      "parent_id": 4
+    },
+    {
+      "id": 7,
+      "name": "Phụ kiện",
+      "parent_id": null
+    },
+    {
+      "id": 8,
+      "name": "Giày dép nam",
+      "parent_id": 7
+    },
+    {
+      "id": 9,
+      "name": "Giày dép nữ",
+      "parent_id": 7
+    },
+    {
+      "id": 10,
+      "name": "Túi xách",
+      "parent_id": 7
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "price": 199000,
+      "name": "Áo thun nam basic",
+      "des": "Áo thun cotton thoáng mát",
+      "id_cattagories": 2
+    },
+    {
+      "id": 2,
+      "price": 299000,
+      "name": "Quần jeans nam slimfit",
+      "des": "Quần jeans co giãn thoải mái",
+      "id_cattagories": 3
+    },
+    {
+      "id": 3,
+      "price": 399000,
+      "name": "Đầm dự tiệc nữ",
+      "des": "Đầm thiết kế sang trọng",
+      "id_cattagories": 5
+    },
+    {
+      "id": 4,
+      "price": 249000,
+      "name": "Áo sơ mi nữ công sở",
+      "des": "Áo sơ mi thanh lịch",
+      "id_cattagories": 6
+    },
+    {
+      "id": 5,
+      "price": 499000,
+      "name": "Giày sneaker nam",
+      "des": "Sneaker phong cách trẻ trung",
+      "id_cattagories": 8
+    },
+    {
+      "id": 6,
+      "price": 599000,
+      "name": "Giày cao gót nữ",
+      "des": "Cao gót sang trọng 7cm",
+      "id_cattagories": 9
+    },
+    {
+      "id": 7,
+      "price": 350000,
+      "name": "Túi xách da nữ",
+      "des": "Túi xách da PU thời trang",
+      "id_cattagories": 10
+    },
+    {
+      "id": 8,
+      "price": 150000,
+      "name": "Mũ lưỡi trai",
+      "des": "Mũ lưỡi trai unisex",
+      "id_cattagories": 7
+    },
+    {
+      "id": 9,
+      "price": 120000,
+      "name": "Thắt lưng nam da bò",
+      "des": "Thắt lưng chất liệu da bò cao cấp",
+      "id_cattagories": 7
+    }
+  ],
+  "images": [
+    {
+      "id": 1,
+      "id_product": 1,
+      "images": "/images/ao/ao_thun/ao_thun_tanktop/Ao_2/Áo Thun The Beginner M004 Xám_99000.webp"
+    },
+    {
+      "id": 2,
+      "id_product": 2,
+      "images": "/images/quan/quan_short/quan_short_du/quan_short_5/Quần Short Seventy Seven 31 Nâu_159000.webp"
+    },
+    {
+      "id": 3,
+      "id_product": 3,
+      "images": "dam1.jpg"
+    },
+    {
+      "id": 4,
+      "id_product": 4,
+      "images": "sominu1.jpg"
+    },
+    {
+      "id": 5,
+      "id_product": 5,
+      "images": "sneaker1.jpg"
+    },
+    {
+      "id": 6,
+      "id_product": 6,
+      "images": "caogot1.jpg"
+    },
+    {
+      "id": 7,
+      "id_product": 7,
+      "images": "tuixach1.jpg"
+    },
+    {
+      "id": 8,
+      "id_product": 8,
+      "images": "mu1.jpg"
+    },
+    {
+      "id": 9,
+      "id_product": 9,
+      "images": "thatlung1.jpg"
+    }
+  ],
+  "colors": [
+    {
+      "id": 1,
+      "id_product": 1,
+      "name": "Trắng"
+    },
+    {
+      "id": 2,
+      "id_product": 1,
+      "name": "Đen"
+    },
+    {
+      "id": 3,
+      "id_product": 2,
+      "name": "Xanh"
+    },
+    {
+      "id": 4,
+      "id_product": 3,
+      "name": "Đỏ"
+    },
+    {
+      "id": 5,
+      "id_product": 4,
+      "name": "Hồng"
+    },
+    {
+      "id": 6,
+      "id_product": 5,
+      "name": "Trắng"
+    },
+    {
+      "id": 7,
+      "id_product": 5,
+      "name": "Đen"
+    },
+    {
+      "id": 8,
+      "id_product": 6,
+      "name": "Đỏ"
+    },
+    {
+      "id": 9,
+      "id_product": 6,
+      "name": "Đen"
+    },
+    {
+      "id": 10,
+      "id_product": 7,
+      "name": "Nâu"
+    },
+    {
+      "id": 11,
+      "id_product": 8,
+      "name": "Xanh"
+    },
+    {
+      "id": 12,
+      "id_product": 9,
+      "name": "Đen"
+    }
+  ],
+  "sizes": [
+    {
+      "id": 1,
+      "id_product": 1,
+      "name": "M"
+    },
+    {
+      "id": 2,
+      "id_product": 1,
+      "name": "L"
+    },
+    {
+      "id": 3,
+      "id_product": 2,
+      "name": "32"
+    },
+    {
+      "id": 4,
+      "id_product": 2,
+      "name": "34"
+    },
+    {
+      "id": 5,
+      "id_product": 3,
+      "name": "S"
+    },
+    {
+      "id": 6,
+      "id_product": 3,
+      "name": "M"
+    },
+    {
+      "id": 7,
+      "id_product": 4,
+      "name": "S"
+    },
+    {
+      "id": 8,
+      "id_product": 4,
+      "name": "M"
+    },
+    {
+      "id": 9,
+      "id_product": 5,
+      "name": "41"
+    },
+    {
+      "id": 10,
+      "id_product": 5,
+      "name": "42"
+    },
+    {
+      "id": 11,
+      "id_product": 6,
+      "name": "36"
+    },
+    {
+      "id": 12,
+      "id_product": 6,
+      "name": "37"
+    },
+    {
+      "id": 13,
+      "id_product": 7,
+      "name": "One Size"
+    },
+    {
+      "id": 14,
+      "id_product": 8,
+      "name": "One Size"
+    },
+    {
+      "id": 15,
+      "id_product": 9,
+      "name": "One Size"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "id_user": 2,
+      "date": "2025-09-01",
+      "status": "Đang xử lý",
+      "total": 498000,
+      "payment_method": "COD"
+    },
+    {
+      "id": 2,
+      "id_user": 2,
+      "date": "2025-09-03",
+      "status": "Hoàn thành",
+      "total": 399000,
+      "payment_method": "Online"
+    },
+    {
+      "id": 3,
+      "id_user": 4,
+      "date": "2025-09-04",
+      "status": "Đang giao",
+      "total": 499000,
+      "payment_method": "COD"
+    },
+    {
+      "id": 4,
+      "id_user": 5,
+      "date": "2025-09-05",
+      "status": "Hoàn thành",
+      "total": 599000,
+      "payment_method": "Online"
+    },
+    {
+      "id": 5,
+      "id_user": 2,
+      "date": "2025-09-06",
+      "status": "Đang xử lý",
+      "total": 350000,
+      "payment_method": "COD"
+    }
+  ],
+  "order_items": [
+    {
+      "id": 1,
+      "id_order": 1,
+      "id_product": 1,
+      "price_ban": 199000,
+      "soluong": 1,
+      "id_size": 1,
+      "id_mausac": 1
+    },
+    {
+      "id": 2,
+      "id_order": 1,
+      "id_product": 2,
+      "price_ban": 299000,
+      "soluong": 1,
+      "id_size": 3,
+      "id_mausac": 3
+    },
+    {
+      "id": 3,
+      "id_order": 2,
+      "id_product": 3,
+      "price_ban": 399000,
+      "soluong": 1,
+      "id_size": 5,
+      "id_mausac": 4
+    }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "role_name": "Admin"
+    },
+    {
+      "id": 2,
+      "role_name": "Khách hàng"
+    },
+    {
+      "id": 3,
+      "role_name": "Nhân viên"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "user_name": "admin",
+      "password": "123456",
+      "email": "admin@example.com",
+      "address": "Hà Nội",
+      "phone": "0123456789"
+    },
+    {
+      "id": 2,
+      "user_name": "khach1",
+      "password": "123456",
+      "email": "khach1@example.com",
+      "address": "TP. Hồ Chí Minh",
+      "phone": "0987654321"
+    },
+    {
+      "id": 3,
+      "user_name": "nhanvien1",
+      "password": "123456",
+      "email": "nv1@example.com",
+      "address": "Đà Nẵng",
+      "phone": "0911223344"
+    },
+    {
+      "id": 4,
+      "user_name": "khach2",
+      "password": "123456",
+      "email": "khach2@example.com",
+      "address": "Hải Phòng",
+      "phone": "0909123456"
+    },
+    {
+      "id": 5,
+      "user_name": "khach3",
+      "password": "123456",
+      "email": "khach3@example.com",
+      "address": "Cần Thơ",
+      "phone": "0933123456"
+    },
+    {
+      "id": 6,
+      "user_name": "nhanvien2",
+      "password": "123456",
+      "email": "nv2@example.com",
+      "address": "Huế",
+      "phone": "0977123456"
+    }
+  ],
+  "user_roles": [
+    {
+      "id_user": 1,
+      "id_role": 1,
+      "module": "Quản trị hệ thống"
+    },
+    {
+      "id_user": 2,
+      "id_role": 2,
+      "module": "Mua hàng"
+    },
+    {
+      "id_user": 3,
+      "id_role": 3,
+      "module": "Quản lý đơn hàng"
+    },
+    {
+      "id_user": 4,
+      "id_role": 2,
+      "module": "Mua hàng"
+    },
+    {
+      "id_user": 5,
+      "id_role": 2,
+      "module": "Mua hàng"
+    },
+    {
+      "id_user": 6,
+      "id_role": 3,
+      "module": "Hỗ trợ khách hàng"
+    }
+  ],
+  "vouchers": [
+    {
+      "id": 1,
+      "code": "SALE10",
+      "id_product": null,
+      "name": "Giảm 10% toàn bộ đơn hàng",
+      "solan_sd": 100,
+      "type_voucher": "percent"
+    },
+    {
+      "id": 2,
+      "code": "FREESHIP",
+      "id_product": null,
+      "name": "Miễn phí vận chuyển",
+      "solan_sd": 200,
+      "type_voucher": "ship"
+    },
+    {
+      "id": 3,
+      "code": "DISCOUNT50",
+      "id_product": 2,
+      "name": "Giảm 50k cho quần jeans",
+      "solan_sd": 50,
+      "type_voucher": "money"
+    }
+  ]
+}

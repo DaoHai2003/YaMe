@@ -7,7 +7,7 @@ const Cart_shop = ({ title, ids }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3003/products")
+    fetch("http://localhost:3008/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

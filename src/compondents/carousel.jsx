@@ -10,7 +10,7 @@ const Carousel = ({ ids = [] }) => {
 
   //Fetch API từ json-server
   useEffect(() => {
-    fetch("http://localhost:3003/products")
+    fetch("http://localhost:3007/products")
       .then((res) => res.json())
       .then((data) => {
         // Nếu API trả về mảng trực tiếp

@@ -24,7 +24,7 @@ const Cart = () => {
           <img
             src={non}
             alt="Áo Thun"
-            className="w-full max-w-[100px]  object-cover border"
+            className="w-full max-w-[100px] object-cover border"
           />
           <div className="flex flex-col justify-center">
             <p className="font-medium">Áo Thun The Beginner M002 Đen</p>
