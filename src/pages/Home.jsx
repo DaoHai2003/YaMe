@@ -8,12 +8,13 @@ import Video from '../compondents/video';
 function Home() {
   return (
     <>
+      <Banner title_banner={'RA MẮT TRANG BÁN HÀNG ONLINE CHÍNH THỨC CỦA YAME VN'}  /> 
       <Header />
-      <Banner title_banner={'RA MẮT TRANG BÁN HÀNG ONLINE CHÍNH THỨC CỦA YAME VN'} />
+      
       
       {/* Lấy dữ liệu từ API */}
       <Cart_shop title={'MỚI MỞ BÁN'}  />
-      <Cart_shop title={'GIẢM GIÁ SÂU NHẤT THÁNG 8'}  />
+      <Cart_shop title={'GIẢM GIÁ SÂU NHẤT THÁNG 8'}  ids={[1,2,3,4,5,6,7,8]} />
       <Cart_shop title={'GIẢM GIÁ SÂU NHẤT THÁNG 7'}  />
       <Cart_shop title={'GIẢM GIÁ SÂU NHẤT THÁNG 5'}  />
       <Video />

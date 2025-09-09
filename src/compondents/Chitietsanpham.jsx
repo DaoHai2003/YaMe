@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import MiniCart from "./mini_cart";
 
 const Products = () => {
   const { id } = useParams();
@@ -10,27 +11,48 @@ const Products = () => {
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
   const [quantity, setQuantity] = useState(1);
-  const [status, setStatus] = useState("loading"); 
+  const [status, setStatus] = useState("loading"); // loading | success | not-found | error
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const resProduct = await fetch(`http://localhost:3008/products/${id}`);
+        // Fetch product
+        const resProduct = await fetch(`http://localhost:3003/products/${id}`);
         if (!resProduct.ok) throw new Error("Lỗi khi fetch dữ liệu sản phẩm");
         const dataProduct = await resProduct.json();
-        setProduct(dataProduct);
 
-        const resSizes = await fetch(`http://localhost:3008/sizes?id_product=${id}`);
+        // Nếu không có product
+        if (!dataProduct || !dataProduct.id) {
+          setStatus("not-found");
+          return;
+        }
+
+        // Fetch image
+        const resImage = await fetch(`http://localhost:3003/images?id_product=${id}`);
+        const dataImage = await resImage.json();
+        const imagePath = dataImage.length > 0 ? dataImage[0].images : "placeholder.jpg";
+
+        setProduct({
+          ...dataProduct,
+          image: imagePath,
+        });
+
+        // Fetch sizes
+        const resSizes = await fetch(`http://localhost:3003/sizes?id_product=${id}`);
         setSizes(await resSizes.json());
 
-        const resColors = await fetch(`http://localhost:3008/colors?id_product=${id}`);
+        // Fetch colors
+        const resColors = await fetch(`http://localhost:3003/colors?id_product=${id}`);
         setColors(await resColors.json());
 
-        const resVouchers = await fetch(`http://localhost:3008/vouchers?id_product=${id}`);
+        // Fetch vouchers
+        const resVouchers = await fetch(`http://localhost:3003/vouchers?id_product=${id}`);
         setVouchers(await resVouchers.json());
 
         setStatus("success");
-      } catch {
+      } catch (err) {
+        console.error("❌ Lỗi fetch:", err);
         setStatus("error");
       }
     };
@@ -38,51 +60,70 @@ const Products = () => {
     fetchData();
   }, [id]);
 
+  // ---- UI theo trạng thái ----
   if (status === "loading") return <div className="text-center py-10">Đang tải sản phẩm...</div>;
-  if (status === "error") return <div className="text-center py-10 text-red-600">Có lỗi xảy ra</div>;
-  if (!product) return <div className="text-center py-10">Sản phẩm không tồn tại</div>;
+  if (status === "error") return <div className="text-center py-10 text-red-600">Có lỗi xảy ra, vui lòng thử lại.</div>;
+  if (status === "not-found") return <div className="text-center py-10">Sản phẩm không tồn tại.</div>;
 
-  // Hàm thay đổi số lượng
+  // ---- Xử lý số lượng ----
   const increaseQty = () => setQuantity((q) => q + 1);
   const decreaseQty = () => setQuantity((q) => (q > 1 ? q - 1 : 1));
 
-  // Hàm thêm vào giỏ hàng
+  // ---- Thêm vào giỏ hàng ----
   const addToCart = () => {
     const cartItem = {
       id: product.id,
       name: product.name,
-      price: product.price,
+      price: Number(product.price),
       size: selectedSize,
       color: selectedColor,
       quantity,
-      total: product.price * quantity,
+      image: product.image,
     };
 
-    // lưu vào localStorage (mock giỏ hàng)
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    cart.push(cartItem);
-    localStorage.setItem("cart", JSON.stringify(cart));
+    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
-    alert("Đã thêm vào giỏ hàng!");
+    const existingIndex = cart.findIndex(
+      (item) =>
+        item.id === cartItem.id &&
+        item.size === cartItem.size &&
+        item.color === cartItem.color
+    );
+
+    if (existingIndex >= 0) {
+      cart[existingIndex].quantity += cartItem.quantity;
+    } else {
+      cart.push(cartItem);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    window.dispatchEvent(new Event("cartUpdated"));
+    setIsCartOpen(true);
   };
 
-  // Hàm mua ngay
+  // ---- Mua ngay ----
   const buyNow = () => {
     addToCart();
-    window.location.href = "/checkout"; // chuyển sang trang thanh toán (tùy bạn đặt route)
+    window.location.href = "/checkout";
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 w-full max-w-[1280px] mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 w-full max-w-[1280px] mx-auto mt-30">
       {/* Ảnh sản phẩm */}
       <div className="md:sticky md:top-0 self-start">
-        <img src={`/${product.image || "placeholder.jpg"}`} alt={product.name}  className="w-[70%] mx-auto" />
+        <img
+          src={`/${product.image || "placeholder.jpg"}`}
+          alt={product.name}
+          className="w-[70%] mx-auto"
+        />
       </div>
 
       {/* Thông tin sản phẩm */}
       <div className="w-[100%] mx-auto px-3">
         <div className="text-4xl font-normal leading-normal">{product.name}</div>
-        <div className="text-2xl py-3">{Number(product.price).toLocaleString("vi-VN")} ₫</div>
+        <div className="text-2xl py-3">
+          {Number(product.price).toLocaleString("vi-VN")} ₫
+        </div>
 
         {/* Màu sắc */}
         <div className="text-gray-700 py-2">Màu sắc</div>
@@ -92,7 +133,10 @@ const Products = () => {
               key={c.id}
               onClick={() => setSelectedColor(c.name)}
               className={`py-2 px-6 rounded-4xl border 
-                ${selectedColor === c.name ? "bg-black text-white" : "bg-white text-black border-gray-600"}`}
+                ${selectedColor === c.name
+                  ? "bg-black text-white"
+                  : "bg-white text-black border-gray-600"
+                }`}
             >
               {c.name}
             </button>
@@ -107,7 +151,10 @@ const Products = () => {
               key={s.id}
               onClick={() => setSelectedSize(s.name)}
               className={`py-2 px-6 rounded-4xl border 
-                ${selectedSize === s.name ? "bg-black text-white" : "bg-white text-black border-gray-600"}`}
+                ${selectedSize === s.name
+                  ? "bg-black text-white"
+                  : "bg-white text-black border-gray-600"
+                }`}
             >
               {s.name}
             </button>
@@ -124,6 +171,26 @@ const Products = () => {
           <button onClick={increaseQty} className="w-[40px] h-[40px] border border-gray-600">+</button>
         </div>
 
+        {/* Buttons */}
+        <div className="py-5">
+          <button
+            onClick={addToCart}
+            disabled={!selectedSize || !selectedColor}
+            className={`w-full py-4 border border-gray-600 
+              ${!selectedSize || !selectedColor
+                ? " text-gray-500 cursor-not-allowed"
+                : "bg-white text-black "}`}
+          >
+            Thêm vào giỏ hàng
+          </button>
+        </div>
+        <div>
+          <MiniCart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+          <button onClick={buyNow} className="border bg-black text-white w-full py-3">
+            Mua ngay
+          </button>
+        </div>
+
         {/* Voucher */}
         <div className="mt-4">
           <h3 className="text-gray-700 font-semibold">Voucher</h3>
@@ -138,18 +205,6 @@ const Products = () => {
           ) : (
             <p className="text-gray-500">Sản phẩm không có hỗ trợ voucher</p>
           )}
-        </div>
-
-        {/* Buttons */}
-        <div className="py-5">
-          <button onClick={addToCart} className="border border-gray-600 w-full py-4">
-            Thêm vào giỏ hàng
-          </button>
-        </div>
-        <div>
-          <button onClick={buyNow} className="border bg-black text-white w-full py-3">
-            Mua ngay
-          </button>
         </div>
 
         {/* Mô tả */}

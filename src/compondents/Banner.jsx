@@ -4,7 +4,7 @@ import banner from '/images/banner.jpg';
 const Banner = ({ title_banner }) => {
   return (
     <div
-      className="bg-no-repeat bg-center bg-cover w-full min-h-[400px] md:min-h-[500px] lg:min-h-[600px] relative mb-10"
+      className="bg-no-repeat bg-center bg-cover w-full min-h-[500px] md:min-h-[600px] lg:min-h-[700px] relative mb-10 "
       style={{ backgroundImage: `url(${banner})` }}
     >
         <div className='bg-black w-full h-full absolute opacity-35'></div>

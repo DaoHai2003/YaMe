@@ -6,7 +6,7 @@ function CartPages() {
     <div>
       <Header/>
       <Cart/>
-      <Cart_shop  />
+      <Cart_shop />
     </div>
   )
 }
