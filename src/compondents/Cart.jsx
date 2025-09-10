@@ -33,14 +33,14 @@ const Cart = () => {
     updateCart(newCart);
   };
 
-  // 👉 luôn tính lại tổng từ price * quantity
+  // luôn tính lại tổng từ price * quantity
   const totalCart = cart.reduce(
     (sum, item) => sum + Number(item.price) * item.quantity,
     0
   );
 
   return (
-    <div className="w-full max-w-[1280px] mx-auto px-4">
+    <div className="w-full max-w-[1280px] mx-auto px-4 mt-[100px]">
       <div className="flex justify-between items-center py-4">
         <p className="text-3xl font-semibold">Giỏ hàng của bạn</p>
         <a href="/" className="text-gray-600 cursor-pointer hover:underline">

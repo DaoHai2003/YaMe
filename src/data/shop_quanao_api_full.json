@@ -7,7 +7,13 @@
     { "id": 5, "name": "Áo Thun Polo", "parent_id": 2 },
     { "id": 6, "name": "Áo Thun Cổ Tròn", "parent_id": 2 },
     { "id": 7, "name": "Áo Khoác Jean", "parent_id": 4 },
-    { "id": 8, "name": "Áo Khoác Hoodie", "parent_id": 4 }
+    { "id": 8, "name": "Áo Khoác Hoodie", "parent_id": 4 },
+    { "id": 9, "name": "Quần", "parent_id": null },
+    { "id": 10, "name": "Quần Jean", "parent_id": 9 },
+    { "id": 11, "name": "Quần Jean boxer", "parent_id": 10 },
+    { "id": 12, "name": "Quần dài", "parent_id": 9 },
+    { "id": 13, "name": "Quần Dài Jogger ", "parent_id": 12 }
+   
   ],
 
   "products": [
@@ -15,7 +21,9 @@
     { "id": 2, "price": 179000, "name": "Áo Thun Cổ Tròn Regular Fit", "des": "Áo thun cổ tròn, form rộng", "id_cattagories": 6 },
     { "id": 3, "price": 299000, "name": "Áo Sơ Mi Tay Ngắn", "des": "Sơ mi nam, form slimfit", "id_cattagories": 3 },
     { "id": 4, "price": 399000, "name": "Áo Khoác Jean Xanh", "des": "Jean dày dặn, kiểu dáng unisex", "id_cattagories": 7 },
-    { "id": 5, "price": 450000, "name": "Áo Khoác Hoodie Basic", "des": "Hoodie unisex, vải nỉ bông", "id_cattagories": 8 }
+    { "id": 5, "price": 450000, "name": "Áo Khoác Hoodie Basic", "des": "Hoodie unisex, vải nỉ bông", "id_cattagories": 8 },
+    { "id": 6, "price": 450000, "name": "Quần Dài Non Branded 41 xanh đen", "des": "..", "id_cattagories": 13 },
+    { "id": 7, "price": 450000, "name": "Quần jean boxer", "des": "..", "id_cattagories": 11 }
   ],
 
   "images": [
@@ -23,7 +31,9 @@
     { "id": 2, "id_product": 2, "images": "images/ao/ao_thun/ao_thun_tayngan/Ao_7/Áo Thun Seventy Seven 04 Nâu Đậm_157000.webp" },
     { "id": 3, "id_product": 3, "images": "images/ao/ao_somi/ao_somi_tayngan/Ao_2/Áo Sơ Mi Non Branded 33 Đen_159000.webp" },
     { "id": 4, "id_product": 4, "images": "images/ao/ao_khoac/ao_khoac_jean/Ao_2/Áo Khoác Jean The Original M039 Xanh Nhạt_357000.webp" },
-    { "id": 5, "id_product": 5, "images": "images/ao/ao_khoac/ao_khoac_hoodie/Ao_1/Áo Khoác Seventy Seven 39 Xám_287000.webp" }
+    { "id": 5, "id_product": 5, "images": "images/ao/ao_khoac/ao_khoac_hoodie/Ao_1/Áo Khoác Seventy Seven 39 Xám_287000.webp" },
+    { "id": 6, "id_product": 6, "images": "images/quan/quan_dai/quan_jogger/Quan_1/Quần Dài Non Branded 41 Xanh Đen_259000.webp" },
+    { "id": 7, "id_product": 7, "images": "images/quan/quan_jean/quan_jeans_jogger/Quan_1/Quần Dài The Original M102 Đen_357000.webp" }
   ],
 
   "colors": [

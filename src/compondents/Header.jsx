@@ -60,7 +60,7 @@ const Header = () => {
                 </Link>
                 {/* Dropdown */}
                 <div
-                  className={`absolute left-[50%] -translate-[35%] top-10 mt-2 w-[800px] h-[300px] bg-white/70 backdrop-blur-md shadow-md   p-6 flex gap-10 transition-all duration-300 transform ${
+                  className={`absolute left-[50%] -translate-[35%] top-9 mt-2 w-[800px] h-[300px] bg-white/70 backdrop-blur-md shadow-md   p-6 flex gap-10 transition-all duration-300 transform ${
                     openMenu === "ao"
                       ? "opacity-100 translate-y-0 visible"
                       : "opacity-0 translate-y-5 invisible"
@@ -100,7 +100,66 @@ const Header = () => {
                 </div>
               </li>
 
-              <li className="px-4 hover:text-black transition">QUẦN</li>
+               {/* Quần */}
+              <li
+                className="px-4 relative group"
+                onMouseEnter={() => setOpenMenu("quan")}
+                onMouseLeave={() => setOpenMenu(null)}
+              >
+                <Link to="/Quan" className="hover:text-black transition">
+                  QUẦN
+                </Link>
+                {/* Dropdown */}
+                <div
+                  className={`absolute left-[50%] -translate-[43%] top-9 mt-2 w-[800px] h-[300px] bg-white/70 backdrop-blur-md shadow-md   p-6 flex gap-10 transition-all duration-300 transform ${
+                    openMenu === "quan"
+                      ? "opacity-100 translate-y-0 visible"
+                      : "opacity-0 translate-y-5 invisible"
+                  }`}
+                >
+                  {/* Cột 1 - Áo Thun */}
+                  <div>
+                    <h3 className="font-bold mb-2">QUẦN SHORT</h3>
+                    <hr className="text-gray-700 pb-3" />
+                    <ul className="space-y-2 text-gray-600 ">
+                      <li><Link to="/Quan/Short" className="hover:text-black hover:text-[18px] transition-all  duration-200">Quần Short Shun</Link></li>
+                      <li><Link to="/Ao/Thun/Co-Tron" className="hover:text-black hover:text-[18px] transition-all  duration-200">Quần Short Boxer</Link></li>
+                      <li><Link to="/Ao/Thun/Polo" className="hover:text-black hover:text-[18px] transition-all  duration-200">Quần Short Dù</Link></li>
+                      <li><Link to="/Ao/Thun/Polo" className="hover:text-black hover:text-[18px] transition-all  duration-200">Quần Short KaKi</Link></li>
+                      <li><Link to="/Ao/Thun/Polo" className="hover:text-black hover:text-[18px] transition-all  duration-200">Quần Short CaRo</Link></li>
+  
+  
+                      </ul>
+                  </div>
+                  {/* Cột 2 - Áo Sơ Mi */}
+                  <div>
+                 <Link to="/Quan/Dai" className="hover:text-black"><h3 className="font-bold mb-2">QUẦN DÀI</h3></Link>
+                     <hr className="text-gray-700 pb-3" />
+                    <ul className="space-y-2 text-gray-600">
+                        <li><Link to="/Quan/Dai/Jogger" className="hover:text-black">Quần dài jogger</Link></li>
+                    </ul>
+                  </div>
+                  {/* Cột 3 - Áo Khoác */}
+                  <div>
+                  <Link to="/Quan/Jean" className="hover:text-black"><h3 className="font-bold mb-2">QUẦN JEAN</h3></Link>
+                     <hr className="text-gray-700 pb-3" />
+                    <ul className="space-y-2 text-gray-600">
+                      <li><Link to="/Quan/Jean/Boxer" className="hover:text-black">Quần jean boxer</Link></li>
+          
+                    </ul>
+                  </div>
+                  {/* cột 4 */}
+                  <div>
+                    <h3 className="font-bold mb-2">QUẦN LÓT</h3>
+                     <hr className="text-gray-700 pb-3" />
+                    <ul className="space-y-2 text-gray-600">
+                      <li><Link to="/Ao/Khoac" className="hover:text-black">Tất cả Áo Khoác</Link></li>
+                      <li><Link to="/Ao/Khoac/Jean" className="hover:text-black">Áo Khoác Jean</Link></li>
+                      <li><Link to="/Ao/Khoac/Hoodie" className="hover:text-black">Áo Khoác Hoodie</Link></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
               <li className="px-4 hover:text-black transition">PHỤ KIỆN</li>
               <li className="px-4 hover:text-black transition">MỚI</li>
               <li className="px-4 hover:text-black transition">CỬA HÀNG</li>

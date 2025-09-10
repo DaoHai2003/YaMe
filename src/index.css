@@ -17,3 +17,10 @@
   }
 }
 
+
+
+/* Đặt font mặc định cho toàn bộ website */
+body {
+  font-family: 'Playfair Display', serif;
+}
+

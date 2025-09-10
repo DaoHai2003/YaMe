@@ -11,7 +11,7 @@ function Ao() {
         <Header/>
         <Banner title_banner={'NÂNG CẤP TỦ ĐỒ - NÂNG CẤP BẠN '}/>
         <FilterBar/>
-        <Cart_shop title={'MỚI MỞ BÁN'} categories={1} />
+        <Cart_shop title={'MỚI MỞ BÁN'} categoryId={1} />
         <Carousel  />  
         <Footer/>
       </div>

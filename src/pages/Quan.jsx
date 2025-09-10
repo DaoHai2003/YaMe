@@ -11,7 +11,7 @@ function Quan() {
         <Header/>
         <Banner title_banner={'NÂNG CẤP TỦ ĐỒ - NÂNG CẤP BẠN '}/>
         <FilterBar/>
-        <Cart_shop title={'MỚI MỞ BÁN'} categoryId={3} />
+        <Cart_shop title={'QUẦN'} categoryId={9} />
         <Carousel  />  
         <Footer/>
       </div>

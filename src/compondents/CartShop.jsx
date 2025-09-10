@@ -68,7 +68,7 @@ const CartShop = ({ title, ids, categoryId }) => {
   if (ids) {
     filteredProducts = filteredProducts.filter((p) => ids.includes(Number(p.id)));
   }
-
+  
   if (loading) {
     return <div className="text-center py-10">Đang tải sản phẩm...</div>;
   }
